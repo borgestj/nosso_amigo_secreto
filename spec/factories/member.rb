@@ -1,7 +1,7 @@
 FactoryBot.define do
- factory :campaign do
-   title         { FFaker::Lorem.word }
-   description   { FFaker::Lorem.sentence }
-   user
+ factory :member do
+   name         { FFaker::Lorem.word }
+   email        { FFaker::Internet.email }
+   campaign
  end
 end

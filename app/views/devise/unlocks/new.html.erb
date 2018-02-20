@@ -7,7 +7,7 @@
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
   </div>
-
+  <a href="<%= route_to_opened(@member) %>">Marcar como aberto</a>
   <div class="actions">
     <%= f.submit "Resend unlock instructions" %>
   </div>
