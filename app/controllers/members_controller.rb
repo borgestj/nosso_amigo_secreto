@@ -1,6 +1,5 @@
 class MembersController < ApplicationController
   before_action :authenticate_user!, except: [:opened]
-
   before_action :set_member, only: [:show, :destroy, :update]
   before_action :is_owner?, only: [:destroy, :update]
   before_action :set_member_by_token, only: [:opened]
@@ -36,8 +35,8 @@ class MembersController < ApplicationController
   end
 
   def opened
-    @member.update(open: true)
     gif = Base64.decode64("R0lGODlhAQABAPAAAAAAAAAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==")
+    @member.update(open: true)
     render text: gif, type: 'image/gif'
   end
 

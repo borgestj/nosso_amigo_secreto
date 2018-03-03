@@ -12,7 +12,7 @@ class CampaignsController < ApplicationController
   end
 
   def create
-    @campaign = Campaign.new(user: current_user, title: 'Nova Campanha', description: 'Descreva sua campanha...')
+    @campaign = Campaign.new(campaign_params)
 
     respond_to do |format|
       if @campaign.save
@@ -61,7 +61,7 @@ class CampaignsController < ApplicationController
   end
 
   def campaign_params
-    params.require(:campaign).permit(:title, :description, :event_date, :event_hour, :location).merge(user: current_user)
+    params.require(:campaign).permit(:title, :description, :event_date, :event_hour, :locale).merge(user: current_user)
   end
 
   def is_owner?
@@ -71,5 +71,9 @@ class CampaignsController < ApplicationController
         format.html { redirect_to main_app.root_url }
       end
     end
+  end
+
+  def person_params
+   params.require(:campaign).permit(:title, :description)
   end
 end

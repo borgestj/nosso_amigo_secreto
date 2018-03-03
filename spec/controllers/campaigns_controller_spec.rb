@@ -55,8 +55,8 @@ RSpec.describe CampaignsController, type: :controller do
     end
 
     it "Redirect to new campaign" do
-      expect(response).to have_http_status(302)
       expect(response).to redirect_to("/campaigns/#{Campaign.last.id}")
+      expect(response).to have_http_status(302)
     end
 
     it "Create campaign with right attributes" do
