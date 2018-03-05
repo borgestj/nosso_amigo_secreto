@@ -5,7 +5,7 @@ class MembersController < ApplicationController
   before_action :set_member_by_token, only: [:opened]
 
   def create
-    @member = Member.new(member_params)
+    @member = Member.new(name: params[:name], email: params[:email], campaign_id: params[:campaign_id])
 
     respond_to do |format|
       if @member.save
