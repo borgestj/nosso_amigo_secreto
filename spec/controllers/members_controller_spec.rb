@@ -46,9 +46,13 @@ RSpec.describe MembersController, type: :controller do
 
   describe "GET #opened " do
     it "returns http success" do
-      test_member = create(:member, campaign: @current_campaign)
-      get :opened, params: {open: true}
-      expect(response).to render('image/gif')
+      invisible_gif = Base64.decode64("R0lGODlhAQABAPAAAAAAAAAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==")
+      subject = create(:member, campaign: @current_campaign)
+      subject.set_pixel
+
+      get :opened, token: subject.token
+
+      expect(response).eql? invisible_gif
     end
 
   end

@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     post 'raffle', on: :member
     # post 'raffle', on: :collection
   end
-  get 'members/:token/opened', to: 'members#opened'
+  
+  get 'members/:token/opened', to: 'members#opened', as: 'opened'
   resources :members, only: [:create, :destroy, :update]
 end
