@@ -10,9 +10,11 @@ class CampaignRaffleJob < ApplicationJob
     end
     campaign.update(status: :finished)
 
-
-    #if results == false
+    if results == false
       # Send mail to owner of campaign (desafio)
-    #end
+      @user = :user
+      mail(to: @user.email, subject: 'Erro na geração do amigo secreto')
+    end
+
   end
 end

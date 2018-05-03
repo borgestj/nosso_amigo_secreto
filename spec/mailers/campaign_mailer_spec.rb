@@ -4,8 +4,11 @@ RSpec.describe CampaignMailer, type: :mailer do
   describe "raffle" do
 
     before do
-      @campaign = create(:campaign)
-      @member   = create(:member, campaign: @campaign)
+      @user = FactoryBot.create(:user)
+      @campaign = FactoryBot.create(:campaign, user: @user)
+
+      @member = create(:member, campaign: @campaign)
+      @friend = create(:member, campaign: @campaign)
       @mail = CampaignMailer.raffle(@campaign, @member, @friend)
     end
 
